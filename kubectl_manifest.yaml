@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-httpd-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-httpd
+  template:
+    metadata:
+      labels:
+        app: my-httpd
+    spec:
+      containers:
+        - name: my-httpd-container
+          image: httpd:2.4.58-bookworm
+          ports:
+            - containerPort: 80
